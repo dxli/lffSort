@@ -19,7 +19,6 @@ void usageMsg()
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
     QString fileName("unicode.lff");
     if(argc==1 && !QFileInfo(fileName).exists()) usageMsg();
 
@@ -32,7 +31,5 @@ int main(int argc, char *argv[])
     if(!QFileInfo(fileName).exists()) exit(0);
     qDebug()<<"Start sorting of "<<fileName;
     LffSort::sortLff(fileName);
-    exit(0);
-
-    return a.exec();
+    return 0;
 }
