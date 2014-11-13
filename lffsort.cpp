@@ -17,6 +17,7 @@ void LffSort::sortLff(const QString& fileName)
 
         if (!fontFile.open(QFile::ReadOnly)) return;
         QTextStream in1(&fontFile);
+        in1.setCodec(R"(UTF-8)");
         QString outFile=fileName;
         outFile.replace(QRegExp(R"(.lff$)",Qt::CaseInsensitive), "-output.lff");
         QFile outputFile(outFile);
@@ -25,6 +26,8 @@ void LffSort::sortLff(const QString& fileName)
             return;
         }
         QTextStream out1(&outputFile);
+        out1.setCodec(R"(UTF-8)");
+
         //header
         QString line;
         while( !in1.atEnd()){
