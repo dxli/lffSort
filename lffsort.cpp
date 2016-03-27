@@ -82,7 +82,7 @@ std::vector<fontItem> LffSort::readFile(const QString& fileName)
 void LffSort::writeFile(QString fileName, std::vector<fontItem> const& fonts)
 {
 	for(int i = 0; QFileInfo(fileName).exists(); i++)
-		fileName.replace(QRegExp(R"(.lff$)",Qt::CaseInsensitive),
+		fileName.replace(QRegExp(R"((-output[0-9]*)*.lff$)",Qt::CaseInsensitive),
 						 QString{"-output%1.lff"}.arg(i));
 	QFile outputFile(fileName);
 	if (!outputFile.open(QFile::WriteOnly)) {
